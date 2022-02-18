@@ -4,13 +4,12 @@ module.exports = {
 	theme: {
 		extend: {
 			fontFamily: {
-				default: ["'Signika', sans-serif"],
-				firaSans: ["'Fira Sans'"],
+				display: ["Inter var"],
 			},
 		},
 	},
 	variants: {
 		extend: {},
 	},
-	plugins: [],
+	plugins: [require("@tailwindcss/forms")],
 };
