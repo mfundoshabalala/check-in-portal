@@ -1,11 +1,10 @@
 // Global styles
 import "../styles/globals.css";
 
-import type { AppProps } from "next/app";
 import Head from "next/head";
-
-// site layout
-import MainSiteLayout from "components/layouts/MainSiteLayout";
+import type { AppProps } from "next/app";
+// components
+import BaseLayout from "layout/BaseLayout";
 
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
@@ -14,9 +13,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 				<meta charSet='utf-8' />
 				<meta name='viewport' content='width=device-width, initial-scale=1' />
 			</Head>
-			<MainSiteLayout>
+			<BaseLayout>
 				<Component {...pageProps} />
-			</MainSiteLayout>
+			</BaseLayout>
 		</>
 	);
 }

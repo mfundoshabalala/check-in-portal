@@ -11,12 +11,7 @@ class MyDocument extends Document {
 		return (
 			<Html lang='en' className='scroll-smooth'>
 				<Head />
-				<body
-					// style={{
-					// 	backgroundImage: `url(/images/background-image.png) `,
-					// }}
-					className='bg-slate-900 text-zinc-200 font-firaSans'
-				>
+				<body className='antialiased text-gray-900 leading-normal'>
 					<Main />
 					<NextScript />
 				</body>
