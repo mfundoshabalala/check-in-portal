@@ -3,13 +3,16 @@ type FormInputProps = {
 	inputType: string;
 	inputLabel: string;
 	required?: boolean;
+	inputValue: string;
 	inputPlaceholder?: string;
+	onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 type ButtonProps = {
 	buttonType: "button" | "submit" | "reset" | undefined;
 	buttonLabel: string;
 	buttonClass?: string;
+	onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 };
 
 type BrandLogoProps = {
@@ -20,11 +23,17 @@ type BrandLogoProps = {
 	height?: number;
 };
 
+type FormDropdownProps = {
+	inputID: string;
+	onChange: (event: React.ChangeEvent<HTMLInputElement, MouseEvent>) => void;
+	inputValue: string;
+};
+
 type BrandLogoComponent = React.FunctionComponent<BrandLogoProps>;
 
 type FormInputComponent = React.FunctionComponent<FormInputProps>;
 
-type FormDropdownComponent = React.FunctionComponent;
+type FormDropdownComponent = React.FunctionComponent<FormDropdownProps>;
 
 type FormButtonComponentProps = React.FunctionComponent<ButtonProps>;
 
