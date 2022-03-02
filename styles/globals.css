@@ -19,15 +19,19 @@ html {
 
 @layer components {
   .form-input {
-    @apply flex-1 focus:ring-0 focus:border-slate-300 focus:bg-white bg-blue-100 rounded border-gray-300 shadow-inner shadow-blue-200 active:shadow-sm py-2 max-w-[350px];
+    @apply flex-1 focus:ring-0 focus:border-slate-300 focus:ring-orange-400 focus:ring-offset-1 focus:bg-white bg-slate-100 rounded border-gray-300 shadow-inner shadow-purple-200 active:shadow-sm py-2 max-w-[350px];
   }
 
   .form-button {
-    @apply px-4 py-2 border rounded active:ring-2  ring-blue-800 shadow bg-blue-500 hover:bg-blue-700 text-white font-bold max-w-xs;
+    @apply px-4 py-2 border-none rounded active:ring-2  ring-blue-800 shadow-lg bg-blue-500 hover:bg-blue-700 text-white font-bold max-w-xs;
   }
 
   .btn {
-    @apply bg-white hover:bg-gray-100 text-gray-900 font-semibold py-2 px-4 border border-gray-400 rounded shadow;
+    @apply bg-white hover:bg-gray-100 text-gray-900 font-semibold py-2 px-4 border border-gray-400 rounded shadow-xl;
+  }
+
+  .background-gradient {
+	  @apply bg-gradient-to-tr from-sky-500  to-orange-200;
   }
 }
 
