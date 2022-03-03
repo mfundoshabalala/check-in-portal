@@ -11,7 +11,7 @@ class MyDocument extends Document {
 		return (
 			<Html lang='en' className='scroll-smooth'>
 				<Head />
-				<body className='antialiased text-gray-900 leading-normal'>
+				<body className='antialiased leading-normal text-gray-900 background-gradient'>
 					<Main />
 					<NextScript />
 				</body>
