@@ -39,7 +39,10 @@ type FormButtonComponentProps = React.FunctionComponent<ButtonProps>;
 
 type FormPanelComponent = React.FunctionComponent<{ children: React.ReactNode }>;
 
-type FormComponentProps = React.FunctionComponent<{ children: React.ReactNode }> & {
+type FormComponentProps = React.FunctionComponent<{
+	children: React.ReactNode;
+	formClass?: string;
+}> & {
 	Input: FormInputComponent;
 } & { Dropdown: FormDropdownComponent } & { Button: FormButtonComponentProps } & {
 	Panel: FormPanelComponent;
