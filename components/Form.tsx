@@ -7,8 +7,12 @@ import PanelComponent from "./Panel";
 import ButtonComponent from "./Button";
 import DropdownComponent from "./Dropdown";
 
-const FormComponent: FormComponentProps = ({ children }) => {
-	return <form className='container flex flex-col max-w-lg gap-4 mx-auto'>{children}</form>;
+const FormComponent: FormComponentProps = ({ children, formClass }) => {
+	return (
+		<form className={`container flex flex-col max-w-lg gap-4 mx-auto ${formClass}`}>
+			{children}
+		</form>
+	);
 };
 
 export default FormComponent;

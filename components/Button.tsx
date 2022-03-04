@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
-const Button: FormButtonComponentProps = ({ buttonType, buttonLabel, buttonClass }) => {
-	const [] = useState();
-
+const Button: FormButtonComponentProps = ({ buttonType, buttonLabel, buttonClass, onClick }) => {
 	return (
-		<button type={buttonType} className={`${buttonClass} form-button w-full`}>
+		<button type={buttonType} onClick={onClick} className={`${buttonClass} form-button w-full`}>
 			{buttonLabel}
 		</button>
 	);
