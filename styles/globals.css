@@ -19,7 +19,7 @@ html {
 
 @layer components {
   .form-input {
-    @apply flex-1 focus:ring-0 focus:border-slate-300 focus:ring-orange-400 focus:ring-offset-1 focus:bg-white bg-slate-100 rounded border-gray-300 shadow-inner shadow-purple-200 active:shadow-sm py-2 max-w-[350px];
+    @apply flex-1 focus:ring-1 focus:border-slate-300 focus:ring-blue-500 focus:ring-offset-0 focus:bg-white bg-slate-100 rounded border-gray-300 shadow-inner shadow-purple-200 active:shadow-sm py-2 max-w-[350px];
   }
 
   .form-button {
@@ -31,7 +31,7 @@ html {
   }
 
   .background-gradient {
-	  @apply bg-gradient-to-tr from-sky-500  to-orange-200;
+	  @apply bg-gradient-to-tr from-blue-500 via-slate-400  to-orange-200;
   }
 }
 
