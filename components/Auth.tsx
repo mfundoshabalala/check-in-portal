@@ -44,7 +44,7 @@ const Auth = () => {
 
 	return (
 		<Form>
-			<Form.BrandLogo />
+			<Form.BrandLogo href='/' />
 			<Form.Input
 				inputLabel='Email'
 				inputID='email'
