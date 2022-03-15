@@ -4,12 +4,24 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { GetServerSideProps, NextPage, PreviewData } from "next";
 import { ParsedUrlQuery } from "querystring";
-//
+// components
 import Form from "components/Form";
 import Header from "components/Header";
-//
-
+// helper functions
 import { supabase } from "utils/supabaseClient";
+import Footer from "components/Footer";
+
+const AuthFooterLinks = [
+	{
+		title: "Forgot your password?",
+		href: "/auth/forgot-password",
+	},
+	{
+		title: "Don't yet have an account?",
+		href: "/auth/login",
+	},
+];
+
 
 const LoginPage: NextPage = (user) => {
 	const [email, setEmail] = useState("");
@@ -85,6 +97,7 @@ const LoginPage: NextPage = (user) => {
 							onClick={handleLogin}
 						/>
 					</Form>
+					<Footer AuthFooterLinks={AuthFooterLinks} />
 				</div>
 			</div>
 		</>

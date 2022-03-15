@@ -7,6 +7,14 @@ import Form from "components/Form";
 import { supabase } from "utils/supabaseClient";
 import Header from "components/Header";
 import { ParsedUrlQuery } from "querystring";
+import Footer from "components/Footer";
+
+const AuthFooterLinks = [
+	{
+		title: "Already have an account?",
+		href: "/auth/login",
+	},
+];
 
 const RegisterPage: NextPage = () => {
 	const [email, setEmail] = useState("");
@@ -87,6 +95,7 @@ const RegisterPage: NextPage = () => {
 							onClick={handleRegister}
 						/>
 					</Form>
+					<Footer AuthFooterLinks={AuthFooterLinks} />
 				</div>
 			</div>
 		</>
