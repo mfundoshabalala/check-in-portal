@@ -1,7 +1,9 @@
 import Head from "next/head";
 import { useState } from "react";
+//
 import Form from "components/Form";
 import Header from "components/Header";
+import enforceAuthenticated from "utils/enforceAuthenticated";
 
 const HomePage = () => {
 	const [candidateInformation, setCandidateInformation] = useState({
@@ -101,3 +103,5 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
+export const getServerSideProps = enforceAuthenticated();

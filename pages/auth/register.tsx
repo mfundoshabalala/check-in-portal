@@ -1,11 +1,12 @@
 import Head from "next/head";
-import { NextPage } from "next";
+import { GetServerSideProps, NextPage, PreviewData } from "next";
 import { useState } from "react";
 // components
 import Form from "components/Form";
 // utility functions
 import { supabase } from "utils/supabaseClient";
 import Header from "components/Header";
+import { ParsedUrlQuery } from "querystring";
 
 const RegisterPage: NextPage = () => {
 	const [email, setEmail] = useState("");
@@ -28,6 +29,9 @@ const RegisterPage: NextPage = () => {
 		} catch (error) {
 			console.log(error);
 		} finally {
+			setEmail("");
+			setPassword("");
+			setPhone("");
 			console.log("User registered!");
 		}
 	};
@@ -90,3 +94,15 @@ const RegisterPage: NextPage = () => {
 };
 
 export default RegisterPage;
+
+type ServerProps = GetServerSideProps<{ [key: string]: unknown }, ParsedUrlQuery, PreviewData>;
+
+export const getServerSideProps: ServerProps = async ({ req }) => {
+	const { user } = await supabase.auth.api.getUserByCookie(req);
+
+	if (user) {
+		return { props: { user }, redirect: { destination: "/" } };
+	}
+
+	return { props: { user: null } };
+};

@@ -1,7 +1,20 @@
-import React from "react";
+// import enforceAuthenticated from "utils/enforceAuthenticated";
 
-const dashboard = () => {
-	return <div>dashboard</div>;
+// import { supabase } from "utils/supabaseClient";
+
+const Dashboard = () => {
+	return <div>Dashboard</div>;
 };
 
-export default dashboard;
+export default Dashboard;
+
+// export const getServerSideProps = enforceAuthenticated();
+// export async function getServerSideProps({ req }) {
+// 	const { user } = await supabase.auth.api.getUserByCookie(req);
+
+// 	if (!user) {
+// 		return { props: {}, redirect: { destination: "/auth/login" } };
+// 	}
+
+// 	return { props: { user } };
+// }

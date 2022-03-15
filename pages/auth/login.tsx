@@ -1,30 +1,46 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import Form from "components/Form";
 import Head from "next/head";
-import { NextPage } from "next";
+import { useRouter } from "next/router";
+import { GetServerSideProps, NextPage, PreviewData } from "next";
+import { ParsedUrlQuery } from "querystring";
 //
 import Form from "components/Form";
 import Header from "components/Header";
+//
+
 import { supabase } from "utils/supabaseClient";
 
-const LoginPage: NextPage = () => {
+const LoginPage: NextPage = (user) => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+
+	const router = useRouter();
+	useEffect(() => {
+		router.prefetch("/dashboard");
+		if (user) {
+			router.push("/");
+		}
+	}, [router, user]);
 
 	const handleLogin = async (e: React.FormEvent<HTMLButtonElement>) => {
 		e.preventDefault();
 
 		try {
-			const { error } = await supabase.auth.signIn({
-				email,
-				password,
-			});
+			const { error } = await supabase.auth.signIn(
+				{
+					email,
+					password,
+				},
+				{
+					redirectTo: "/",
+				}
+			);
 
 			if (error) throw error;
 		} catch (error) {
 			console.log(error);
-		} finally {
-			console.log("User login!");
+			!error && router.push("/dashboard");
 		}
 	};
 
@@ -76,3 +92,15 @@ const LoginPage: NextPage = () => {
 };
 
 export default LoginPage;
+
+type ServerProps = GetServerSideProps<{ [key: string]: unknown }, ParsedUrlQuery, PreviewData>;
+
+export const getServerSideProps: ServerProps = async ({ req }) => {
+	const { user } = await supabase.auth.api.getUserByCookie(req);
+
+	if (user) {
+		return { props: { user }, redirect: { destination: "/auth/dashboard" } };
+	}
+
+	return { props: { user: null } };
+};
