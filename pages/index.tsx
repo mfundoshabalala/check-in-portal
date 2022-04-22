@@ -104,4 +104,4 @@ const HomePage = () => {
 
 export default HomePage;
 
-export const getServerSideProps = enforceAuthenticated();
+// export const getServerSideProps = enforceAuthenticated();
