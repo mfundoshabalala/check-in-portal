@@ -3,11 +3,11 @@ import { GetServerSideProps, NextPage, PreviewData } from "next";
 import { useState } from "react";
 // components
 import Form from "components/Form";
+import AuthFooter from "components/AuthFooter";
 // utility functions
 import { supabase } from "utils/supabaseClient";
 import Header from "components/Header";
 import { ParsedUrlQuery } from "querystring";
-import Footer from "components/Footer";
 
 const AuthFooterLinks = [
 	{
@@ -95,7 +95,7 @@ const RegisterPage: NextPage = () => {
 							onClick={handleRegister}
 						/>
 					</Form>
-					<Footer AuthFooterLinks={AuthFooterLinks} />
+					<AuthFooter AuthFooterLinks={AuthFooterLinks} />
 				</div>
 			</div>
 		</>

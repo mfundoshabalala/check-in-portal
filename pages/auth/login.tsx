@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
-// import Form from "components/Form";
+//
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { GetServerSideProps, NextPage, PreviewData } from "next";
+import { useEffect, useState } from "react";
 import { ParsedUrlQuery } from "querystring";
+import { GetServerSideProps, NextPage, PreviewData } from "next";
 // components
 import Form from "components/Form";
 import Header from "components/Header";
+import Footer from "components/AuthFooter";
 // helper functions
 import { supabase } from "utils/supabaseClient";
-import Footer from "components/Footer";
 
 const AuthFooterLinks = [
 	{
@@ -21,7 +21,6 @@ const AuthFooterLinks = [
 		href: "/auth/login",
 	},
 ];
-
 
 const LoginPage: NextPage = (user) => {
 	const [email, setEmail] = useState("");
@@ -108,12 +107,12 @@ export default LoginPage;
 
 type ServerProps = GetServerSideProps<{ [key: string]: unknown }, ParsedUrlQuery, PreviewData>;
 
-export const getServerSideProps: ServerProps = async ({ req }) => {
-	const { user } = await supabase.auth.api.getUserByCookie(req);
+// export const getServerSideProps: ServerProps = async ({ req }) => {
+// 	const { user } = await supabase.auth.api.getUserByCookie(req);
 
-	if (user) {
-		return { props: { user }, redirect: { destination: "/auth/dashboard" } };
-	}
+// 	if (user) {
+// 		return { props: { user }, redirect: { destination: "/auth/dashboard" } };
+// 	}
 
-	return { props: { user: null } };
-};
+// 	return { props: { user: null } };
+// };
