@@ -8,9 +8,9 @@
 		"test": "npm run test",
 		"lint": "next lint",
 		"lint:fix": "next lint --fix",
-		"type-check": "tsc --pretty --noEmit",
+		"typecheck": "tsc --pretty --noEmit",
 		"format": "prettier --write .",
-		"test-all": "npm run format && npm run lint && npm run type-check && npm run build",
+		"test-all": "npm run format && npm run lint && npm run typecheck && npm run build",
 		"prepare": "husky install"
 	},
 	"dependencies": {
