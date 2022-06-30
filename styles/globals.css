@@ -27,7 +27,7 @@ html {
   }
 
   .btn.btn-primary {
-	@apply bg-b lue-500 hover:bg-blue-700 text-white;
+	@apply bg-blue-500 hover:bg-blue-700 text-white;
   }
 
   .btn.btn-secondary {
@@ -39,7 +39,7 @@ html {
   }
 
   form {
-	@apply bg-slate-50 p-14 border border-none drop-shadow rounded shadow-lg;
+	@apply bg-slate-50 p-14 drop-shadow rounded-lg shadow-lg;
   }
 
   .form-group-container {
