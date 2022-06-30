@@ -1,5 +1,5 @@
 {
-  "name": "custom-app",
+  "name": "candidate-attendance-tracker",
   "private": true,
   "scripts": {
     "dev": "next dev",
