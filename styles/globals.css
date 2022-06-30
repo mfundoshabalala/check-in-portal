@@ -2,36 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @import url("https://rsms.me/inter/inter.css");
 html {
-  font-family: "Inter", sans-serif;
+	font-family: "Inter", sans-serif;
 }
 
 @supports (font-variation-settings: normal) {
-  html {
-    font-family: "Inter var", sans-serif;
-  }
+	html {
+		font-family: "Inter var", sans-serif;
+	}
 }
 
 @layer components {
-  .form-input {
-    @apply flex-1 focus:ring-1 focus:border-slate-300 focus:ring-blue-500 focus:ring-offset-0 focus:bg-white bg-slate-100 rounded border-gray-300 shadow-inner shadow-purple-200 active:shadow-sm py-2 max-w-[350px];
-  }
+	.form-group {
+		@apply flex justify-between font-light items-baseline;
+	}
 
-  .form-button {
-    @apply px-4 py-2 border-none rounded active:ring-2  ring-blue-800 shadow-lg bg-blue-500 hover:bg-blue-700 text-white font-bold max-w-xs;
-  }
+	.form-label {
+		@apply capitalize font-normal text-slate-800 tracking-tight;
+	}
 
   .btn {
     @apply hover:bg-gray-100 text-gray-900 font-semibold py-2 px-6 border border-gray-400 rounded shadow-xl active:shadow-sm hover:translate-y-2 duration-200 ease-in-out;
   }
 
   .btn.btn-primary {
-	@apply bg-blue-500 hover:bg-blue-700 text-white;
+	@apply bg-b lue-500 hover:bg-blue-700 text-white;
   }
 
   .btn.btn-secondary {
@@ -74,7 +70,6 @@ html {
 	@apply flex justify-center gap-x-10 mt-6;
   }
 }
-
 
 html,
 body {

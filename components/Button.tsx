@@ -1,8 +1,8 @@
 import React from "react";
 
-const Button: FormButtonComponentProps = ({ buttonType, buttonLabel, buttonClass, onClick }) => {
+const Button: FormButtonComponent = ({ buttonType, buttonLabel, buttonClass, onClick }) => {
 	return (
-		<button type={buttonType} onClick={onClick} className={`${buttonClass} form-button w-full`}>
+		<button type={buttonType} onClick={onClick} className={`${buttonClass} form-button`}>
 			{buttonLabel}
 		</button>
 	);

@@ -8,8 +8,8 @@ const InputComponent: FormInputComponent = ({
 	...rest
 }) => {
 	return (
-		<div className='flex items-center justify-between gap-2'>
-			<label htmlFor={inputID} className='font-normal capitalize'>
+		<div className='form-group'>
+			<label htmlFor={inputID} className='form-label'>
 				{inputLabel}
 			</label>
 			<input

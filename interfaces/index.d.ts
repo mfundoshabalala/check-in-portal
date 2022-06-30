@@ -26,21 +26,30 @@ type FormDropdownProps = {
 	inputValue: string;
 };
 
+type ChildrenProps = {
+	children?: React.ReactNode;
+};
+
+interface HeaderProps extends ChildrenProps {
+	headingTitle?: string;
+}
+interface PanelProps extends ChildrenProps {
+	className?: string;
+}
+
+interface FormProps extends ChildrenProps {
+	onSubmit?: (event: React.FormEvent) => void;
+}
+
+type FormButtonComponent = React.FunctionComponent<ButtonProps>;
+type FormHeaderComponent = React.FunctionComponent<HeaderProps>;
+type FormPanelComponent = React.FunctionComponent<PanelProps>;
 type BrandLogoComponent = React.FunctionComponent<BrandLogoProps>;
-
 type FormInputComponent = React.FunctionComponent<FormInputProps>;
-
 type FormDropdownComponent = React.FunctionComponent<FormDropdownProps>;
 
-type FormButtonComponentProps = React.FunctionComponent<ButtonProps>;
-
-type FormPanelComponent = React.FunctionComponent<{ children: React.ReactNode }>;
-
-type FormComponentProps = React.FunctionComponent<{
-	children: React.ReactNode;
-	formClass?: string;
-}> & {
+type FormComponentProps = React.FunctionComponent<FormProps> & {
 	Input: FormInputComponent;
-} & { Dropdown: FormDropdownComponent } & { Button: FormButtonComponentProps } & {
+} & { Dropdown: FormDropdownComponent } & { Button: FormButtonComponent } & {
 	Panel: FormPanelComponent;
-} & { BrandLogo: BrandLogoComponent };
+} & { Logo: BrandLogoComponent } & { Header: FormHeaderComponent };
