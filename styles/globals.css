@@ -18,57 +18,67 @@ html {
 		@apply flex justify-between font-light items-baseline;
 	}
 
-	.form-label {
-		@apply capitalize font-normal text-slate-800 tracking-tight;
+	label.form-label {
+		@apply capitalize font-light group-hover:font-normal text-slate-800 tracking-tight;
 	}
 
-  .btn {
-    @apply hover:bg-gray-100 text-gray-900 font-semibold py-2 px-6 border border-gray-400 rounded shadow-xl active:shadow-sm hover:translate-y-2 duration-200 ease-in-out;
-  }
+	label.required {
+		@apply after:ml-1 after:content-["*"] after:text-red-800;
+	}
 
-  .btn.btn-primary {
-	@apply bg-blue-500 hover:bg-blue-700 text-white;
-  }
+	.btn-group {
+		@apply flex justify-center gap-x-2 mt-6;
+	}
 
-  .btn.btn-secondary {
-	@apply bg-gray-100 hover:bg-gray-200 text-gray-700;
-  }
+	.btn {
+		@apply hover:bg-gray-100 text-gray-900 font-bold tracking-wide py-2 px-6
+		border-none rounded shadow-xl active:shadow-sm hover:translate-y-2
+		duration-200 ease-in-out min-w-[125px] drop-shadow;
+	}
 
-  .background-gradient {
-	  @apply bg-gradient-to-tr from-blue-500 via-slate-400  to-orange-200;
-  }
+	.btn.btn-primary {
+		@apply bg-blue-500 hover:bg-blue-700 text-white;
+	}
 
-  form {
-	@apply bg-slate-50 p-14 drop-shadow rounded-lg shadow-lg;
-  }
+	.btn.btn-secondary {
+		@apply bg-red-500 hover:bg-red-700 text-white;
+	}
 
-  .form-group-container {
-    @apply flex items-center justify-center gap-x-6 gap-y-4 py-2;
-  }
+	.btn.btn-success {
+		@apply bg-green-500 hover:bg-green-700 text-white;
+	}
 
-  .form-group {
-	@apply flex flex-col justify-center items-stretch font-light gap-y-1 text-left;
-  }
+	.background-gradient {
+		@apply bg-gradient-to-tr from-blue-500 via-slate-400  to-orange-200;
+	}
 
-  .form-control {
-	@apply rounded placeholder:font-thin shadow-inner border border-slate-300 bg-slate-200 placeholder:text-black;
-  }
+	form {
+		@apply bg-slate-50 p-14 drop-shadow rounded-lg shadow-lg space-y-6 max-w-xl;
+	}
 
-  textarea.form-control {
-	@apply resize-none min-h-[100px];
-  }
+	.form-group-container {
+		@apply flex items-center justify-center gap-x-6 gap-y-4 py-2;
+	}
 
-  .invalid-input {
-	@apply text-red-800 text-xs;
-  }
+	.form-group {
+		@apply flex flex-col justify-center items-stretch font-light gap-y-1 text-left;
+	}
 
-  .is-invalid {
-	@apply border-red-500;
-  }
+	.form-control {
+		@apply rounded placeholder:font-thin shadow-inner border border-slate-300 bg-slate-200 placeholder:text-black;
+	}
 
-  .btn-group {
-	@apply flex justify-center gap-x-10 mt-6;
-  }
+	textarea.form-control {
+		@apply resize-none min-h-[100px];
+	}
+
+	.invalid-input {
+		@apply text-red-800 text-xs;
+	}
+
+	.is-invalid {
+		@apply border-red-500;
+	}
 }
 
 html,
@@ -100,6 +110,12 @@ button {
 	overflow-y: auto;
 	overflow-x: hidden;
 }
+
+/* #__next div {
+	width: 100%;
+	min-height: 100%;
+	justify-content: center;
+} */
 
 ::-webkit-scrollbar {
 	width: 0.6rem;
