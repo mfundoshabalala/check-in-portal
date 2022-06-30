@@ -1,14 +1,13 @@
 import React from "react";
-import BrandLogo from "./BrandLogo";
+// components
 import Heading from "./Heading";
+import BrandLogo from "./BrandLogo";
 
-type HeaderComponent = React.FunctionComponent<{ title?: string }>;
-
-const Header: HeaderComponent = ({ title }) => {
+const Header: FormHeaderComponent = ({ headingTitle }) => {
 	return (
 		<header className='flex flex-col items-center justify-between gap-2'>
 			<BrandLogo href='/' alt='Capaciti Logo' />
-			<Heading title={title ?? "Candidate Checking System"} />
+			<Heading headingTitle={headingTitle ?? "Candidate Checking System"} />
 		</header>
 	);
 };

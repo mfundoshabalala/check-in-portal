@@ -22,11 +22,11 @@ function MyApp({ Component, pageProps }: AppProps) {
 		const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
 			updateSupabaseCookie(event, session);
 
-			if(event === "SIGNED_IN") {
+			if (event === "SIGNED_IN") {
 				setAuthenticatedState("authenticated");
 				Router.push("/auth/dashboard");
 			}
-			if(event === "SIGNED_OUT") setAuthenticatedState("not-authenticated");
+			if (event === "SIGNED_OUT") setAuthenticatedState("not-authenticated");
 
 			console.log(authenticatedState);
 		});
@@ -36,7 +36,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 		return () => {
 			authListener?.unsubscribe();
 		};
-	},[authenticatedState, router]);
+	}, [authenticatedState, router]);
 
 	return (
 		<>

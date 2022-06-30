@@ -10,13 +10,13 @@ const DropdownComponent: FormDropdownComponent = ({ onChange, inputID, inputValu
 	];
 
 	return (
-		<div className='flex items-center justify-between gap-2'>
-			<label htmlFor='cohort' className='font-normal capitalize'>
+		<div className='form-group'>
+			<label htmlFor='cohort' className='form-label'>
 				Cohort
 			</label>
 			<select
 				name='cohort'
-				className='form-input'
+				className='form-select'
 				id={inputID}
 				value={inputValue}
 				onChange={onChange}

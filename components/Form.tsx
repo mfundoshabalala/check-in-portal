@@ -1,15 +1,19 @@
 import React from "react";
 
 // Form children components
+import Header from "./Header";
 import BrandLogo from "./BrandLogo";
 import InputComponent from "./Input";
 import PanelComponent from "./Panel";
 import ButtonComponent from "./Button";
 import DropdownComponent from "./Dropdown";
 
-const FormComponent: FormComponentProps = ({ children, formClass }) => {
+const FormComponent: FormComponentProps = ({ children, onSubmit }) => {
 	return (
-		<form className={`container flex flex-col max-w-lg gap-4 mx-auto ${formClass}`}>
+		<form
+			onSubmit={onSubmit}
+			className={`container flex flex-col max-w-xl gap-4 mx-auto bg-slate-100 py-16 px-12 rounded-lg`}
+		>
 			{children}
 		</form>
 	);
@@ -17,7 +21,8 @@ const FormComponent: FormComponentProps = ({ children, formClass }) => {
 
 export default FormComponent;
 
-FormComponent.BrandLogo = BrandLogo;
+FormComponent.Header = Header;
+FormComponent.Logo = BrandLogo;
 FormComponent.Input = InputComponent;
 FormComponent.Panel = PanelComponent;
 FormComponent.Button = ButtonComponent;

@@ -1,9 +1,7 @@
 import Head from "next/head";
-import { useState } from "react";
+import React, { useState } from "react";
 //
 import Form from "components/Form";
-import Header from "components/Header";
-import enforceAuthenticated from "utils/enforceAuthenticated";
 
 const HomePage = () => {
 	const [candidateInformation, setCandidateInformation] = useState({
@@ -11,6 +9,12 @@ const HomePage = () => {
 		candidateNumber: "",
 		candidateReason: "",
 		candidateCohort: "",
+		formErrors: { email: "", password: "" },
+		candidateNameValid: false,
+		candidateNumberValid: false,
+		candidateReasonValid: false,
+		candidateCohortValid: false,
+		formValid: false,
 	});
 
 	const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,19 +41,26 @@ const HomePage = () => {
 		}
 	};
 
+	const handleFormValidation = (event: React.FormEvent) => {
+		event?.preventDefault();
+		if (candidateInformation.candidateName === "") {
+			alert("Candidate name is empty.");
+		}
+	};
+
 	return (
 		<>
 			<Head>
 				<title>Home</title>
 			</Head>
-			<div className='flex flex-col items-center justify-center w-full h-screen gap-6'>
-				<Header />
-				<Form>
+			<div className='flex items-center justify-center w-full h-screen'>
+				<Form onSubmit={handleFormValidation}>
+					<Form.Header headingTitle='Candidate Attendance Tracker' />
 					<Form.Input
 						inputID='candidateName'
 						inputType='text'
 						inputLabel='Candidate Name'
-						inputPlaceholder='Mfundo Shabalala'
+						inputPlaceholder='John Doe'
 						onChange={handleInputChange}
 						inputValue={candidateInformation?.candidateName}
 						required
@@ -58,7 +69,7 @@ const HomePage = () => {
 						inputID='candidateNumber'
 						inputType='text'
 						inputLabel='Candidate Number'
-						inputPlaceholder='SDEV032'
+						inputPlaceholder='CITI022'
 						onChange={handleInputChange}
 						inputValue={candidateInformation?.candidateNumber}
 						required
@@ -66,7 +77,7 @@ const HomePage = () => {
 					<Form.Input
 						inputID='candidateReason'
 						inputType='text'
-						inputLabel='Lateness Reason'
+						inputLabel='Reason'
 						inputPlaceholder='Traffic Congestion'
 						onChange={handleInputChange}
 						inputValue={candidateInformation?.candidateReason}
@@ -76,23 +87,25 @@ const HomePage = () => {
 						onChange={handleInputChange}
 						inputValue={candidateInformation?.candidateCohort}
 					/>
-					<Form.Panel>
+					<Form.Panel className='justify-center mt-5'>
 						<Form.Button
 							buttonType='submit'
 							buttonLabel='Check in'
-							buttonClass='bg-rose-600 hover:bg-rose-800'
+							buttonClass='bg-teal-700 hover:bg-teal-800'
 							onClick={(event) => {
 								event?.preventDefault();
 								console.log(candidateInformation);
+								handleFormValidation(event);
 							}}
 						/>
 						<Form.Button
 							buttonType='submit'
-							buttonLabel='Absent'
-							buttonClass='bg-slate-600 hover:bg-slate-800'
+							buttonLabel='Check out'
+							buttonClass='bg-rose-600 hover:bg-rose-800'
 							onClick={(event) => {
 								event?.preventDefault();
 								console.log(candidateInformation);
+								handleFormValidation(event);
 							}}
 						/>
 					</Form.Panel>
