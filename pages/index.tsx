@@ -1,107 +1,130 @@
-import Head from "next/head";
-import { useState } from "react";
-//
-import Form from "components/Form";
-import Header from "components/Header";
-import enforceAuthenticated from "utils/enforceAuthenticated";
+import { useEffect } from "react";
+import * as Yup from "yup";
+// hooks
+import { FieldValues, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import BrandLogo from "components/BrandLogo";
 
 const HomePage = () => {
-	const [candidateInformation, setCandidateInformation] = useState({
-		candidateName: "",
-		candidateNumber: "",
-		candidateReason: "",
-		candidateCohort: "",
+	const YupForm = Yup.object().shape({
+		firstName: Yup.string().required("First name is required"),
+		lastName: Yup.string().required("Last name is required"),
+		candidateNumber: Yup.string()
+			.required("Candidate number is required")
+			.uppercase()
+			.min(7, "Candidate number is too short")
+			.matches(/^[A-Z]{4}[0][0-9]{2}$/, "Candidate number is invalid"),
+		cohortName: Yup.string().required("Cohort name is required"),
+		message: Yup.string(),
 	});
+	const resolverForm = { resolver: yupResolver(YupForm) };
 
-	const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		if (event.target.id === "candidateName") {
-			setCandidateInformation({
-				...candidateInformation,
-				candidateName: event.target.value,
-			});
-		} else if (event.target.id === "candidateNumber") {
-			setCandidateInformation({
-				...candidateInformation,
-				candidateNumber: event.target.value,
-			});
-		} else if (event.target.id === "candidateReason") {
-			setCandidateInformation({
-				...candidateInformation,
-				candidateReason: event.target.value,
-			});
-		} else if (event.target.id === "candidateCohort") {
-			setCandidateInformation({
-				...candidateInformation,
-				candidateCohort: event.target.value,
-			});
-		}
+	const {
+		register,
+		handleSubmit,
+		reset,
+		formState,
+		formState: { isSubmitSuccessful, errors },
+	} = useForm(resolverForm);
+
+	const onSubmit = (data: FieldValues) => {
+		console.log(data);
+		return false;
 	};
+
+	useEffect(() => {
+		if (isSubmitSuccessful) {
+			reset({ firstName: "", lastName: "", candidateNumber: "", cohortName: "", message: "" });
+		}
+	}, [formState, isSubmitSuccessful, reset]);
 
 	return (
 		<>
-			<Head>
-				<title>Home</title>
-			</Head>
-			<div className='flex flex-col items-center justify-center w-full h-screen gap-6'>
-				<Header />
-				<Form>
-					<Form.Input
-						inputID='candidateName'
-						inputType='text'
-						inputLabel='Candidate Name'
-						inputPlaceholder='Mfundo Shabalala'
-						onChange={handleInputChange}
-						inputValue={candidateInformation?.candidateName}
-						required
-					/>
-					<Form.Input
-						inputID='candidateNumber'
-						inputType='text'
-						inputLabel='Candidate Number'
-						inputPlaceholder='SDEV032'
-						onChange={handleInputChange}
-						inputValue={candidateInformation?.candidateNumber}
-						required
-					/>
-					<Form.Input
-						inputID='candidateReason'
-						inputType='text'
-						inputLabel='Lateness Reason'
-						inputPlaceholder='Traffic Congestion'
-						onChange={handleInputChange}
-						inputValue={candidateInformation?.candidateReason}
-					/>
-					<Form.Dropdown
-						inputID='candidateCohort'
-						onChange={handleInputChange}
-						inputValue={candidateInformation?.candidateCohort}
-					/>
-					<Form.Panel>
-						<Form.Button
-							buttonType='submit'
-							buttonLabel='Check in'
-							buttonClass='bg-rose-600 hover:bg-rose-800'
-							onClick={(event) => {
-								event?.preventDefault();
-								console.log(candidateInformation);
-							}}
+			<form className='space-y-6 text-center' onSubmit={handleSubmit(onSubmit)}>
+				<BrandLogo href='/' alt='Capaciti Logo' />
+				<h1 className='text-2xl font-black tracking-tight text-center text-slate-800 upper'>
+					Candidate Attendance Tracker
+				</h1>
+				<section className='form-wrapper'>
+					<div className='form-group-container'>
+						<div className='form-group'>
+							<label htmlFor='firstName'>First Name</label>
+							<input
+								type='text'
+								placeholder='John'
+								{...register("firstName")}
+								className={`form-control ${errors.firstName ? "is-invalid" : ""}`}
+							/>
+							<span className='invalid-input'>{errors.firstName?.message}</span>
+						</div>
+						<div className='form-group'>
+							<label htmlFor='lastName'>Last Name</label>
+							<input
+								type='text'
+								placeholder='Doe'
+								{...register("lastName")}
+								className={`form-control ${errors.lastName ? "is-invalid" : ""}`}
+							/>
+							<span className='invalid-input'>{errors.lastName?.message}</span>
+						</div>
+					</div>
+					<div className='form-group-container'>
+						<div className='form-group'>
+							<label htmlFor='candidateNumber'>Candidate Number</label>
+							<input
+								type='text'
+								placeholder='CITI022'
+								{...register("candidateNumber", {
+									pattern: /^[A-Z]{4}[0-9]{3}$/,
+								})}
+								className={`form-control uppercase ${errors.candidateNumber ? "is-invalid" : ""}`}
+							/>
+							<span className='invalid-input'>{errors.candidateNumber?.message}</span>
+						</div>
+						<div className='form-group'>
+							<label htmlFor='cohortName'>Cohort Name</label>
+							<input
+								type='text'
+								placeholder='CitiDev'
+								{...register("cohortName")}
+								className={`form-control ${errors.cohortName ? "is-invalid" : ""}`}
+							/>
+							<span className='invalid-input'>{errors.cohortName?.message}</span>
+						</div>
+					</div>
+					<div className='form-group'>
+						<label htmlFor='message'>Message</label>
+						<textarea
+							{...register("message")}
+							placeholder='Reason for lateness/absence'
+							className={`form-control ${errors.message ? "is-invalid" : ""}`}
 						/>
-						<Form.Button
-							buttonType='submit'
-							buttonLabel='Absent'
-							buttonClass='bg-slate-600 hover:bg-slate-800'
-							onClick={(event) => {
-								event?.preventDefault();
-								console.log(candidateInformation);
-							}}
-						/>
-					</Form.Panel>
-				</Form>
-			</div>
+						<span className='invalid-input'>{errors.message?.message}</span>
+					</div>
+					<div className='btn-group'>
+						<button type='submit' className='btn btn-primary'>
+							Submit
+						</button>
+						<button
+							type='button'
+							className='btn btn-secondary'
+							onClick={() =>
+								reset({
+									firstName: "",
+									lastName: "",
+									candidateNumber: "",
+									cohortName: "",
+									message: "",
+								})
+							}
+						>
+							Reset
+						</button>
+					</div>
+				</section>
+			</form>
 		</>
 	);
 };
 
 export default HomePage;
-
-// export const getServerSideProps = enforceAuthenticated();
