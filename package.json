@@ -5,7 +5,7 @@
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
-		"test": "npm test --config jest.config.js --passWithNoTests",
+		"test": "jest --passWithNoTests --coverage",
 		"lint": "next lint",
 		"lint:fix": "next lint --fix",
 		"typecheck": "tsc --pretty --noEmit",
