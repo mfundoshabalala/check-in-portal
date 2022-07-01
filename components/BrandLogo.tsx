@@ -7,7 +7,7 @@ const imageURL = "https://www.citi.org.za/wp-content/uploads/citi-logo.svg";
 const BrandLogo: BrandLogoComponent = ({ href, src, alt, height, width }) => {
 	return (
 		<Link href={href ?? imageURL} passHref>
-			<a className='w-56 h-16 mb-10'>
+			<a className='w-56 h-16 mb-10 outline-none'>
 				<Image src={imageURL || src} alt={alt} width={width! | 224} height={height! | 64} />
 			</a>
 		</Link>
