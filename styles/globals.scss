@@ -85,10 +85,10 @@ html {
 	}
 
 	.sidebar {
-		@apply flex flex-col min-h-screen border-r pt-2;
+		@apply flex flex-col min-h-screen border-r;
 
 		.top {
-			@apply flex justify-center items-center h-20 p-3 drop-shadow;
+			@apply flex justify-center items-center h-20 px-3 drop-shadow;
 
 			.logo {
 				@apply relative;
@@ -133,6 +133,29 @@ html {
 			@apply w-8 h-8 border border-slate-300 rounded first:bg-slate-50 even:bg-slate-600 last:bg-purple-600 duration-500 hover:cursor-pointer hover:-translate-y-1;
 		}
 	}
+
+	.content {
+		@apply flex-1;
+	}
+
+	.navbar {
+		@apply flex justify-between items-center h-20 px-4 py-2 border-b w-full;
+
+		.search {
+			// @apply flex gap-x-1 border items-center rounded w-36 px-2 py-1;
+
+			input {
+				@apply rounded;
+			}
+
+			i.fa.fa-search {
+				@apply text-slate-600;
+			}
+		}
+
+
+
+	}
 }
 
 html,
@@ -164,12 +187,6 @@ button {
 	overflow-y: auto;
 	overflow-x: hidden;
 }
-
-/* #__next div {
-	width: 100%;
-	min-height: 100%;
-	justify-content: center;
-} */
 
 ::-webkit-scrollbar {
 	width: 0.6rem;
