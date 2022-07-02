@@ -2,10 +2,7 @@ type FormInputProps = {
 	inputID: string;
 	inputType: string;
 	inputLabel: string;
-	required?: boolean;
-	inputValue: string;
 	inputPlaceholder?: string;
-	onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 type ButtonProps = {

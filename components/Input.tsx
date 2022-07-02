@@ -5,9 +5,7 @@ const InputComponent: FormInputComponent = ({
 	inputLabel,
 	inputType,
 	inputPlaceholder,
-	onChange,
-	inputValue,
-	required,
+	...rest
 }) => {
 	return (
 		<div className='form-group'>
@@ -16,11 +14,9 @@ const InputComponent: FormInputComponent = ({
 			</label>
 			<input
 				className='form-input'
+				{...rest}
 				id={inputID}
 				type={inputType}
-				value={inputValue}
-				onChange={onChange}
-				required={required}
 				placeholder={inputPlaceholder}
 			/>
 		</div>
