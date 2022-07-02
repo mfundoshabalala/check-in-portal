@@ -1,12 +1,12 @@
 // Global styles
-import "../styles/globals.css";
+import "../styles/globals.scss";
 // package import
 import Head from "next/head";
 // types import
+import type { ReactElement } from "react";
 import type { AppProps } from "next/app";
-import BasicLayout from "layouts/BasicLayout";
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps): ReactElement {
 	return (
 		<>
 			<Head>
@@ -21,9 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 				<link rel='icon' href='/favicon.ico' />
 				<title>Capaciti: Candidate Attendance Tracker</title>
 			</Head>
-			<BasicLayout>
-				<Component {...pageProps} />
-			</BasicLayout>
+			<Component {...pageProps} />
 		</>
 	);
 }
