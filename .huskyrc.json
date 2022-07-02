@@ -1,0 +1,7 @@
+{
+	"hooks": {
+		"pre-commit": "husky --hooks-dir .huskyrc/hooks run pre-commit",
+		"commit-msg": "husky --hooks-dir .huskyrc/hooks run commit-msg",
+		"pre-push": "husky --hooks-dir .huskyrc/hooks run pre-push"
+	}
+}
