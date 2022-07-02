@@ -1,0 +1,97 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: ["main", "dev"]
+  pull_request:
+    branches: ["main", "dev"]
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        uses: actions/setup-node@v3
+        with:
+          node-version: "12.x"
+          cache: 'npm'
+      - name: Upgrade NPM
+        run: npm install -g npm
+      - name: Install dependencies
+        run: npm ci
+  lint:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        uses: actions/setup-node@v3
+        with:
+          node-version: "12.x"
+          cache: 'npm'
+      - name: Upgrade NPM
+        run: npm install -g npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Run lint
+        run: npm run lint
+  test:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        uses: actions/setup-node@v3
+        with:
+          node-version: "12.x"
+          cache: 'npm'
+      - name: Upgrade NPM
+        run: npm install -g npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Run tests
+        run: npm run test
+  typecheck:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        uses: actions/setup-node@v3
+        with:
+          node-version: "12.x"
+          cache: 'npm'
+      - name: Upgrade NPM
+        run: npm install -g npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Run typecheck
+        run: npm run typecheck
+  build:
+    needs: typecheck
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [12, 14, 16]
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+          cache: 'npm'
+      - name: Upgrade NPM
+        run: npm install -g npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Run build
+        run: npm run build --if-present
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
