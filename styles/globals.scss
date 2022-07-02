@@ -130,7 +130,7 @@ html {
 		@apply flex justify-center items-center gap-x-3 drop-shadow;
 
 		.colorOption {
-			@apply w-8 h-8 border border-slate-300 rounded first:bg-slate-50 even:bg-slate-600 last:bg-purple-600 ;
+			@apply w-8 h-8 border border-slate-300 rounded first:bg-slate-50 even:bg-slate-600 last:bg-purple-600 duration-500 hover:cursor-pointer hover:-translate-y-1;
 		}
 	}
 }
