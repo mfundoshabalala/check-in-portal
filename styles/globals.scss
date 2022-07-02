@@ -130,7 +130,7 @@ html {
 		@apply flex justify-center items-center gap-x-3 drop-shadow;
 
 		.colorOption {
-			@apply w-8 h-8 border border-slate-300 rounded first:bg-slate-50 even:bg-slate-600 last:bg-purple-600 duration-500 hover:cursor-pointer hover:-translate-y-1;
+			@apply w-8 h-8 border border-slate-300 rounded first:bg-slate-50 even:bg-orange-600 last:bg-purple-600 duration-500 hover:cursor-pointer hover:-translate-y-1;
 		}
 	}
 
@@ -162,7 +162,7 @@ html {
 		}
 
 		.avatar {
-			@apply flex items-center justify-center w-11 h-11 rounded-full shadow-inner relative overflow-hidden;
+			@apply flex items-center justify-center w-11 h-11 rounded-full shadow-inner relative overflow-hidden border;
 		}
 
 	}
