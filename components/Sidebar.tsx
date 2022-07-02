@@ -82,7 +82,7 @@ const Sidebar: React.FunctionComponent = () => {
 		<div className='sidebar'>
 			<div className='top'>
 				<span className='w-full h-full outline-none logo'>
-					<Image src='/images/citi-logo.svg' alt='...' layout='fill' />
+					<Image src='/images/citi-logo.svg' alt='...' height={75} width={150} />
 				</span>
 			</div>
 			<hr />
