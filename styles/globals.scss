@@ -115,7 +115,7 @@ html {
 
 				li.sublist-item {
 					@apply flex items-center justify-start px-3 py-1 text-base font-light text-cyan-900;
-					@apply duration-300 border border-slate-300 shadow-inner rounded gap-x-2;
+					@apply duration-500 border border-slate-300 shadow-inner rounded gap-x-2;
 					@apply active:bg-slate-900 active:text-white hover:bg-cyan-900 hover:text-white hover:translate-y-1;
 
 					a {
@@ -139,13 +139,13 @@ html {
 	}
 
 	.navbar {
-		@apply flex justify-between items-center h-20 px-4 py-2 border-b w-full;
+		@apply flex justify-between items-center h-20 px-8 py-2 border-b w-full;
 
 		.search {
-			// @apply flex gap-x-1 border items-center rounded w-36 px-2 py-1;
+			@apply flex gap-x-1 border items-center rounded w-48 pr-2;
 
 			input {
-				@apply rounded;
+				@apply border-none py-1 w-full mr-2 rounded-l shadow-inner placeholder:text-sm;
 			}
 
 			i.fa.fa-search {
@@ -153,7 +153,17 @@ html {
 			}
 		}
 
+		.items {
+			@apply flex gap-x-4 justify-center items-center text-xl text-center text-cyan-800;
 
+			i {
+				@apply hover:cursor-pointer;
+			}
+		}
+
+		.avatar {
+			@apply flex items-center justify-center w-11 h-11 rounded-full shadow-inner relative overflow-hidden;
+		}
 
 	}
 }
