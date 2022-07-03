@@ -3,6 +3,7 @@ import React from "react";
 import Sidebar from "components/Sidebar";
 import DashboardLayout from "layouts/DashboardLayout";
 import Navbar from "components/Navbar";
+import Widget from "components/Widget";
 
 const Dashboard = () => {
 	return (
@@ -10,7 +11,12 @@ const Dashboard = () => {
 			<Sidebar />
 			<section className='content'>
 				<Navbar />
-				Content Section
+				<div className='flex justify-around w-full gap-5 p-5'>
+					<Widget />
+					<Widget />
+					<Widget />
+					<Widget />
+				</div>
 			</section>
 		</DashboardLayout>
 	);
